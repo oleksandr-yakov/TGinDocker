@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ~/main_files/other/study/TgBot
+#cd ~/main_files/other/study/TgBot
 
 
 echo "FROM python" > Dockerfile
