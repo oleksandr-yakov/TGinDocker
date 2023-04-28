@@ -26,7 +26,9 @@ then
     exit 1
 else 
 	echo "OK LETS GO: Image 'tgbot_img:v1'Created $(docker images|grep tgbot_img | awk '{ print  $4, $5, $6 }')"
-	docker run  --rm -t -d --name tgbot   tgbot_img:v1
+
+	docker run  -v /etc/timezone:/etc/timezone:ro -v /etc/localtime:/etc/localtime:ro --rm -t -d --name tgbot   tgbot_img:v1
+
 fi
 
 
