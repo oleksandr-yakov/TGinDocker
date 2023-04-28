@@ -18,7 +18,7 @@ async def startBot(message: types.Message):
     #user_id = message.from_user.id
 
 
-@dp.message_handler(text=["макс підор"])
+@dp.message_handler(text=["jenkins"])
 async def startBot(message: types.Message):
     await message.reply(f"Returns TRUE!!! \U0001FAE1\n")
 
