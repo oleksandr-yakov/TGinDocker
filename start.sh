@@ -1,6 +1,16 @@
 #!/bin/bash
 #cd ~/main_files/other/study/TgBot
-docker stop tgbot
+
+output=$( docker ps -af name=tgbot | grep tgbot 2> /dev/null )
+
+
+if [[ ! -z ${output} ]]; then
+  docker stop tgbot
+fi
+
+
+
+
 
 echo "FROM python" > Dockerfile
 echo "WORKDIR /home/app/" >> Dockerfile
@@ -32,7 +42,7 @@ else
 fi
 
 
-output=$( docker ps -af name=tgbot | grep tgbot 2> /dev/null )
+
 
 if [[ ! -z ${output} ]]; then 
   echo "A container with a name: tgbot exists and has status: $( echo ${output} | awk '{ print $7 }' )"
