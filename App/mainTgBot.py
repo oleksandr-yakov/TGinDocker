@@ -1,5 +1,5 @@
 import requests
-import datetime, time
+import datetime, pytz
 from config import TOKEN, TG_TOKEN
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
@@ -14,6 +14,8 @@ async def startBot(message: types.Message):
     userFULL = message.from_user.full_name
     await message.reply(f" Hi, {userFULL} !\n"
                         f"Please enter the city whose weather you want to know\n"
+                        f"NEW UPDATE\n"
+                        f"Type '/time' to see the Current time in Kyiv and Ontario:\n"
                         )
     #user_id = message.from_user.id
 
@@ -21,6 +23,15 @@ async def startBot(message: types.Message):
 @dp.message_handler(text=["JNK"])
 async def startBot(message: types.Message):
     await message.reply(f"Returns TRUE!!! \U0001FAE1\n")
+
+@dp.message_handler(text=['/time'])
+async def send_time(message: types.Message):
+    kyiv_tz = pytz.timezone('Europe/Kiev')
+    ontario_tz = pytz.timezone('Canada/Eastern')
+    kyiv_time = pytz.datetime.datetime.now(kyiv_tz)
+    canada_time = pytz.datetime.datetime.now(ontario_tz)
+    response_text = f"Current time in Kyiv: {kyiv_time.strftime('%H:%M')}\nCurrent time in Ontario: {canada_time.strftime('%H:%M')}"
+    await bot.send_message(chat_id=message.chat.id, text=response_text)
 
 
 @dp.message_handler()
