@@ -12,10 +12,10 @@ dp = Dispatcher(bot=bot)
 @dp.message_handler(commands=["start"])
 async def startBot(message: types.Message):
     userFULL = message.from_user.full_name
-    await message.reply(f" Hi, {userFULL} !\n"
+    await message.reply(f" Hi, {userFULL}!\n"
                         f"Please enter the city whose weather you want to know\n"
                         f"NEW UPDATE\n"
-                        f"Type '/time' to see the Current time in Kyiv and Ontario:\n"
+                        f"Type '/time' to see the Current Time in Kyiv and Ontario:\n"
                         )
     #user_id = message.from_user.id
 
@@ -23,8 +23,8 @@ async def startBot(message: types.Message):
 @dp.message_handler(commands=["help"])
 async def startBot(message: types.Message):
     userFULL = message.from_user.full_name
-    await message.reply(f" Hi, {userFULL} !\n"
-                        f"Type '/time - current time Kyiv-Ontario'\n"
+    await message.reply(f" Hi, {userFULL}!\n"
+                        f"Type '/time' - current time Kyiv-Ontario\n"
                         f"Enter the city name like: 'Kyiv' 'Київ' \n"
                         )
 
@@ -54,7 +54,8 @@ async def get_weather(message: types.Message):
         "Drizzle": "\U00002614",
         "Thunderstorm": "\U000026A1",
         "Snow": "\U0001F328",
-        "Mist": "\U0001F32B"
+        "Mist": "\U0001F32B",
+        "Haze": "\U0001F32B"
     }
     try:
         req = requests.get(
@@ -81,12 +82,12 @@ async def get_weather(message: types.Message):
         #print(f"Current time {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}")
         #f" Current time {time.asctime()}\n
         await message.reply(f"Current time {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}\n"
-              f" City - > {CityName};  Сountry - > {area};\n"
-              f" Shortly - > {weather} {smiles};\n temperature - > {temp} °C; "
-              f" Temperature Feels Like - > {feels}°C;\n Speed of Wind - > {speed_wind} mps;\n"
-              f" Humidity - > {humidity}%;\n Pressure - > {pressure*0.750062} mmHg;\n"
-              f" Sunrise - > {sunrise};\n Sunset - > {sunset};\n"
-              f" Bright Part Of The Day - > {bright_PartOfTheDay};\n\n"
+              f"City - > {CityName};  Сountry - > {area};\n"
+              f"Shortly - > {weather} {smiles};\nTemperature - > {temp} °C;\n`"
+              f"Temperature Feels Like - > {feels}°C;\nSpeed of Wind - > {speed_wind} mps;\n"
+              f"Humidity - > {humidity}%;\nPressure - > {pressure*0.750062} mmHg;\n"
+              f"Sunrise - > {sunrise};\nSunset - > {sunset};\n"
+              f"Bright Part Of The Day - > {bright_PartOfTheDay};\n\n"
               f"Support  - > Type '/help'\U0001FAE1\n")
 
 
