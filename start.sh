@@ -1,6 +1,6 @@
 #!/bin/bash
 #cd ~/main_files/other/study/TgBot
-
+docker stop tgbot
 
 echo "FROM python" > Dockerfile
 echo "WORKDIR /home/app/" >> Dockerfile
