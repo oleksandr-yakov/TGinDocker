@@ -53,7 +53,7 @@ if [[ ${exists} -eq 1 ]]; then
   docker top $(docker ps -aqf "name=tgbot")
 else
   echo "Container with a name: tgbot does not exist"
-  exit 1
+  #exit 1
 fi
 
 #docker stats $(docker ps -aqf "name=tgbot")
