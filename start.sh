@@ -1,11 +1,15 @@
 #!/bin/bash
 #cd ~/main_files/other/study/TgBot
 
-output=$( docker ps -af name=tgbot | grep tgbot 2> /dev/null )
+#output=$( docker ps -af name=tgbot | grep tgbot 2> /dev/null )
+exists=$(docker ps -qf name=tgbot | wc -l)
 
-
-if [[ ! -z ${output} ]]; then
+if [[ ${exists} -eq 1 ]];
+then
   docker stop tgbot
+  echo "Conteiner tgbot stoped "
+else
+  echo "Continue to CI"
 fi
 
 
@@ -44,7 +48,7 @@ fi
 
 
 
-if [[ ! -z ${output} ]]; then 
+if [[ ${exists} -eq 1 ]]; then
   echo "A container with a name: tgbot exists and has status: $( echo ${output} | awk '{ print $7 }' )"
   docker top $(docker ps -aqf "name=tgbot")
 else
