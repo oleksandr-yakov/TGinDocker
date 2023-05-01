@@ -83,7 +83,7 @@ async def get_weather(message: types.Message):
         #f" Current time {time.asctime()}\n
         await message.reply(f"Current time {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}\n"
               f"City - > {CityName};  Сountry - > {area};\n"
-              f"Shortly - > {weather} {smiles};\nTemperature - > {temp} °C;\n`"
+              f"Shortly - > {weather} {smiles};\nTemperature - > {temp} °C;\n"
               f"Temperature Feels Like - > {feels}°C;\nSpeed of Wind - > {speed_wind} mps;\n"
               f"Humidity - > {humidity}%;\nPressure - > {pressure*0.750062} mmHg;\n"
               f"Sunrise - > {sunrise};\nSunset - > {sunset};\n"
